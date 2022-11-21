@@ -1,16 +1,20 @@
-# This is a sample Python script.
+# first all imports
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+print("Start importing...")
+
+import tensorflow as tf
+from tensorflow import keras
+from pathlib import Path
+
+print("Import complete")
+
+# stepp 1: load the data
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
+movielens_data_file_url = "http://files.grouplens.org/datasets/movielens/ml-latest-small.zip"
 
+movielens_zipped_file = keras.utils.get_file("ml-latest-small.zip", movielens_data_file_url, extract=False)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+keras_datasets_path = Path(movielens_zipped_file).parents[0]
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+movielens_dir = keras_datasets_path / "ml-latest-small"
